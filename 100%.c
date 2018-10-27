@@ -512,9 +512,10 @@ scanf("%c",&switch1);
 switch(switch1){
 case '1':
     system("cls");
-    ui_saldo();
+    
     if (saldo!=0){
      salah:
+     	ui_saldo();
        printf("\n\n\n\n\n\t\t\t\t\t  Saldo Anda    : Rp. %0.2f \n",saldo);
        printf("\n\n\n\n\n\t\t\t\t\t  Tambah Saldo?");
        printf(" Ketik Y/T : ");
@@ -535,6 +536,7 @@ case '1':
         else{
          printf("  Salah!");
          Sleep(1000);
+         system("cls");
          goto salah;
   }
     }
@@ -604,27 +606,29 @@ else{
     anuitas = (bunga_persen/100 * pinjaman[0])/(1 - pow((1 + bunga_persen/100), - bulan));
 
     printf("  Anuitas : %d\n\n", anuitas);
-printf("     .-------------------------------------------------------.\n");
-printf("     | Nomor    |   Modal      | Bunga | Tetapan  | Sisa     |\n");
-printf("     | Angsuran |  Pinjaman    | BANK  | Angsuran | Pinjaman |\n");
+printf("     .----------------------------------------------------------.\n");
+printf("     | Nomor    |   Modal       | Bunga | Tetapan  |  Sisa      |\n");
+printf("     | Angsuran |  Pinjaman     | BANK  | Angsuran |  Pinjaman  |\n");
+printf("     '----------------------------------------------------------'");
     while (pinjaman[hitung]>0){
            hitung++;
 
            bunga = pinjaman[hitung - 1]*0.05;
            angsuran=anuitas-bunga;
-printf("\n        %d",hitung);
+printf("\n     |   %d",hitung);
          
 
-     printf("\t   %d",pinjaman[hitung - 1]);
-     printf("\t%d",bunga);
-	 printf("\t  %d",angsuran);
-     printf("    %d",pinjaman[hitung - 1] - angsuran);
+     printf("\t|  %d",pinjaman[hitung - 1]);
+     printf("\t| %d",bunga);
+	 printf("\t| %d",angsuran);
+     printf("    |  %d\t|",pinjaman[hitung - 1] - angsuran);
     // printf("\t",pinjaman[hitung - 1] - angsuran);
            pinjaman[hitung] = pinjaman[hitung - 1] - angsuran;
       
 
 
     }
+    printf("\n     '----------------------------------------------------------'\n");
 
     printf("\n  Pinjaman anda telah lunas setelah %d", hitung);printf(" bulan dengan kembalian sebesar %d", -1*(pinjaman[hitung - 1]-angsuran));
  	getch();
@@ -635,11 +639,11 @@ printf("\n        %d",hitung);
     
     ui_tentangprogram();
     
-	printf("Bunga Tunggal = Jika Sebuah modal sebesar M disimpan di bank (dipinjamkan)\n\n dengan bunga tunggal sebesar b dalam suatu periode (yang telah disepakati) \n\n");
-	printf("Bunga majemuk = bunga yang dibebankan untuk setiap periode didasarkan pada modal/pinjaman\n\n pokok ditambah setiap beban bunga yang terakumulasi sampai dengan awal periode  \n\n");
-	printf("Anuitas = serangkaian pembayaran pinjaman dengan jumlah yang sama dalam periode waktu yang sama pula \n\n");
-	printf("Rencana Pelunasan Angsuran = Menggunakan anuitas untuk melunasi angsuran yang ada  \n\n");
-	printf("  Kembali ke Menu\n");
+	printf("\tBunga Tunggal = Jika Sebuah modal sebesar M disimpan di bank (dipinjamkan)\n\n\t  dengan bunga tunggal sebesar b dalam suatu periode (yang telah disepakati). \n\n");
+	printf("\tBunga majemuk = bunga yang dibebankan untuk setiap periode didasarkan pada modal/pinjaman\n\n\t  pokok ditambah setiap beban bunga yang terakumulasi sampai dengan awal periode.  \n\n");
+	printf("\tAnuitas = serangkaian pembayaran pinjaman dengan jumlah yang sama dalam periode waktu yang sama pula. \n\n");
+	printf("\tRencana Pelunasan Angsuran = Menggunakan anuitas untuk melunasi angsuran yang ada.  \n\n");
+	printf("  Tekan Enter Kembali ke Menu");
    	getch();
  	return menu();
     break;
@@ -666,7 +670,6 @@ menu();
 
 return 0;
 }
-
 
 
 
